@@ -1,0 +1,32 @@
+.wa{position:fixed;right:max(1.1rem,env(safe-area-inset-right));bottom:max(1.1rem,env(safe-area-inset-bottom));z-index:900;
+  animation:waIn .8s 3.6s var(--ease) both}
+@keyframes waIn{from{transform:scale(0) rotate(-90deg)}to{transform:none}}
+
+.wa__btn{position:relative;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--navy));box-shadow:0 14px 34px rgba(15,42,74,.42);
+  transition:transform .4s var(--ease)}
+.wa__btn::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--blue);z-index:-1;animation:waPulse 2.4s infinite}
+@keyframes waPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+.wa:hover .wa__btn{transform:scale(1.08) rotate(-6deg)}
+.wa__badge{position:absolute;top:1px;right:1px;width:18px;height:18px;border-radius:50%;background:#25D366;border:3px solid #fff}
+
+/* popup (hover / focus / one-time auto peek) */
+.wa__pop{position:absolute;right:0;bottom:100%;padding-bottom:14px;width:min(78vw,290px);display:flex;flex-direction:column;gap:.55rem;
+  opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transform-origin:bottom right;
+  transition:opacity .35s,transform .45s var(--ease),visibility .35s}
+.wa:hover .wa__pop,.wa:focus-within .wa__pop,.wa.is-peek .wa__pop{opacity:1;visibility:visible;transform:none}
+.wa.is-closed .wa__pop{opacity:0;visibility:hidden;transform:translateY(12px) scale(.96)}
+
+.wa__top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.wa__who{display:inline-flex;align-items:center;gap:.55rem;padding:.3rem .95rem .3rem .3rem;border-radius:999px;background:#fff;
+  box-shadow:0 8px 22px rgba(15,42,74,.2);font:600 .9rem var(--font-display);color:var(--navy)}
+.wa__avatar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--grad-cta);color:#fff;font:700 .62rem var(--font-display)}
+.wa__x{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--navy);
+  box-shadow:0 8px 22px rgba(15,42,74,.2);transition:background .3s,color .3s,transform .3s var(--ease)}
+.wa__x:hover{background:var(--navy);color:#fff;transform:rotate(90deg)}
+
+.wa__msg{display:block;padding:.5rem;border-radius:28px;background:#fff;box-shadow:0 14px 34px rgba(15,42,74,.24)}
+.wa__msg span{display:block;padding:.95rem 1.2rem;border-radius:22px;background:var(--sky);color:var(--navy);font:500 1rem var(--font-body)}
+.wa__msg:hover span{background:var(--navy);color:#fff}
+
+@media (max-width:640px){.wa__btn{width:62px;height:62px}.wa__btn svg{width:30px;height:30px}}

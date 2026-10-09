@@ -1,0 +1,5 @@
+.wd{position:absolute;left:0;right:0;height:clamp(40px,6vw,90px);overflow:hidden;line-height:0;pointer-events:none;z-index:1}
+.wd--bottom{bottom:-1px}
+.wd--top{top:-1px;transform:scaleY(-1)}
+.wd svg{width:200%;height:100%;animation:wdSlide 22s linear infinite}
+@keyframes wdSlide{to{transform:translateX(-50%)}}

@@ -1,0 +1,27 @@
+.fw{background:var(--sky);padding:clamp(1rem,3vw,2rem) 0 clamp(6rem,10vw,8rem)}
+.fw__panel{position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem;
+  padding:clamp(2rem,5vw,3.6rem) clamp(1.6rem,5vw,4rem) clamp(2rem,5vw,3.6rem) clamp(2rem,5.5vw,4.6rem);border-radius:44px;color:#fff;
+  background:linear-gradient(135deg,var(--navy),#174a8c 70%,var(--blue));box-shadow:0 30px 60px rgba(15,42,74,.28)}
+.fw__panel::before{content:"";position:absolute;left:0;top:14%;bottom:14%;width:8px;border-radius:0 8px 8px 0;background:var(--grad-cta)}
+.fw__panel::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.1) 50%,transparent 65%);transform:translateX(-100%);animation:fwSheen 6s ease-in-out infinite}
+@keyframes fwSheen{60%,100%{transform:translateX(100%)}}
+.fw__orb{position:absolute;border-radius:50%;pointer-events:none;animation:drift 9s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(14px,-18px)}}
+.fw__orb--1{width:220px;height:220px;background:rgba(244,123,32,.18);right:-60px;top:-80px}
+.fw__orb--2{width:120px;height:120px;background:rgba(255,255,255,.07);left:38%;bottom:-50px;animation-delay:-4s}
+
+.fw__copy{position:relative;max-width:640px}
+.fw__copy h2{font-family:var(--font-head);font-weight:700;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;letter-spacing:-.03em}
+.fw__copy em{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:1.16em;color:var(--orange)}
+.fw__copy p{margin-top:.9rem;color:#C9D6E8;font-size:1.08rem}
+
+.fw__btn{position:relative;display:inline-flex;align-items:center;gap:.7rem;padding:1.05rem 2.2rem;border-radius:999px;background:var(--orange);color:#fff;
+  font:600 1.05rem var(--font-display);box-shadow:0 14px 30px rgba(244,123,32,.4);transition:background .35s,transform .35s var(--ease)}
+.fw__pulse{position:absolute;inset:0;border-radius:inherit;background:var(--orange);z-index:-1;animation:fwPulse 2.2s infinite}
+@keyframes fwPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.35,1.7);opacity:0}}
+.fw__btn svg{transition:transform .35s var(--ease)}
+.fw__btn:hover{background:var(--red);transform:translateY(-4px)}
+.fw__btn:hover svg{transform:translateX(6px)}
+
+@media (max-width:700px){.fw__panel{border-radius:32px;flex-direction:column;align-items:flex-start}}

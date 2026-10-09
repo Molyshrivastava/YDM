@@ -1,0 +1,2 @@
+.logo{--s:128px;display:block;position:relative;width:calc(var(--s)*.84);height:calc(var(--s)*.42);overflow:hidden}
+.logo img{position:absolute;left:50%;top:50%;width:var(--s);height:var(--s);max-width:none;transform:translate(-50%,-50%)}

@@ -1,0 +1,78 @@
+/* The hero is exactly one screen minus the navbar, so the navbar always sits at the bottom of the first screen */
+.hero{--px:0;--py:0;--mx:50%;--my:50%;position:relative;display:flex;align-items:center;color:#fff;
+  height:calc(100vh - var(--nav-h));height:calc(100svh - var(--nav-h));min-height:480px;
+  padding:2rem 0 clamp(5rem,9vw,8rem)}
+
+/* ---- fixed photo (stays still while content scrolls over it) ---- */
+.hero__media{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#05080f;animation:intro 2.6s var(--ease) both}
+@keyframes intro{from{transform:scale(1.12);opacity:.3}to{transform:none;opacity:1}}
+.hero__parallax{position:absolute;inset:-2%;
+  transform:translate(calc(var(--px)*-14px),calc(var(--py)*-9px));transition:transform .5s ease-out}
+.hero__img{width:100%;height:100%;object-fit:cover;object-position:68% 25%;backface-visibility:hidden;
+  filter:contrast(1.07) saturate(1.06) brightness(1.05);animation:breathe 24s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.04)}}
+
+.hero__shade{position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(4,9,18,.84) 0%,rgba(4,9,18,.5) 36%,rgba(4,9,18,.06) 66%,transparent 100%),
+    radial-gradient(ellipse 70% 80% at 68% 34%,transparent 40%,rgba(3,7,14,.5) 100%),
+    linear-gradient(0deg,rgba(4,9,18,.5) 0%,transparent 28%)}
+.hero__grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+.hero__spot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;mix-blend-mode:screen;
+  background:radial-gradient(420px circle at var(--mx) var(--my),rgba(244,123,32,.18),transparent 62%)}
+.hero:hover .hero__spot{opacity:1}
+
+/* ---- content: moves with the cursor, and fades + drifts up as you scroll ---- */
+.hero__content{position:relative;z-index:2;
+  transform:translate(calc(var(--px)*10px),calc(var(--py)*6px));transition:transform .4s ease-out;
+  opacity:calc(1 - var(--sy,0) / 620);translate:0 calc(var(--sy,0) * -.14px)}
+
+/* headline: bold tight sans + light italic serif (same pairing as the reference heading) */
+.hero__title{font-family:var(--font-head);font-weight:700;letter-spacing:-.035em;line-height:1.04;
+  font-size:clamp(2.1rem,min(5.4vw,9.5vh),4.6rem);color:#fff;text-shadow:0 6px 28px rgba(0,0,0,.45)}
+.ln{display:block}
+.ln--serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.005em;
+  font-size:1.28em;line-height:.95;margin-top:.04em}
+.word{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding:.1em .14em .22em .06em;margin:-.1em -.14em -.22em -.06em}   /* room for italic overhang */
+.word>span{display:inline-block;transform:translateY(115%);animation:wordUp 1s var(--d) var(--ease) forwards;animation-play-state:paused}
+.ready .word>span{animation-play-state:running}
+@keyframes wordUp{to{transform:none}}
+
+.hero__rotate{margin-top:1.1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;
+  font:500 clamp(1rem,1.8vw,1.25rem) var(--font-display);color:rgba(255,255,255,.9);opacity:0;animation:fade .8s 2.4s forwards}
+.hero__rotate-word{font-weight:700;color:var(--orange);display:inline-block;animation:swap .6s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(60%) rotateX(-70deg)}to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+
+.hero__cta{margin-top:1.6rem;opacity:0;animation:fade .8s 2.7s forwards}
+.hero__btn{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 1.9rem;border-radius:999px;background:#fff;color:var(--navy);
+  font:600 1.02rem var(--font-display);box-shadow:0 14px 34px rgba(0,0,0,.3);
+  transition:background .35s,color .35s,transform .35s var(--ease)}
+.hero__btn svg{transition:transform .35s var(--ease)}
+.hero__btn:hover{background:var(--orange);color:#fff;transform:translateY(-3px)}
+.hero__btn:hover svg{transform:translateX(6px)}
+
+/* ---- animated glass wave ---- */
+.hero__wave{position:absolute;left:0;right:0;bottom:0;height:clamp(54px,9vw,120px);overflow:hidden;pointer-events:none}
+.hero__wave svg{position:absolute;left:0;bottom:0;width:200%;height:100%}
+.hero__wave .wf{fill:var(--glass)}
+.hero__wave .wl{fill:none;stroke:rgba(255,255,255,.42);stroke-width:2;vector-effect:non-scaling-stroke}
+.hero__wave .w1{animation:wave 16s linear infinite}
+.hero__wave .w2{bottom:12px;animation:wave 26s linear infinite reverse}
+.hero__wave .w2 .wl{stroke:rgba(255,255,255,.2)}
+@keyframes wave{to{transform:translateX(-50%)}}
+
+/* ---- tablet + mobile: photo on top, text below on dark navy ---- */
+@media (max-width:900px){
+  .hero{height:auto;min-height:calc(100svh - var(--nav-h));align-items:flex-end;padding:2rem 0 clamp(4.5rem,14vw,6.5rem)}
+  .hero__media{background:#07101f}
+  .hero__parallax{inset:0 -2% auto -2%;height:64%}
+  .hero__img{object-position:76% center}
+  .hero__shade{background:linear-gradient(180deg,rgba(7,16,31,.3) 0%,rgba(7,16,31,0) 22%,rgba(7,16,31,.65) 48%,#07101f 66%)}
+}
+@media (max-width:480px){
+  .hero__btn{padding:.85rem 1.6rem;font-size:1rem}
+}

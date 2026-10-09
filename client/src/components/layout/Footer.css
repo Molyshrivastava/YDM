@@ -1,0 +1,30 @@
+.foot{--fr:48px;position:relative;z-index:1;overflow:hidden;background:var(--navy);color:#fff;
+  border-radius:var(--fr) var(--fr) 0 0;margin-top:calc(var(--fr)*-1);padding:clamp(3.5rem,7vw,5.5rem) 0 1.6rem}
+.foot::before{content:"";position:absolute;top:-160px;right:-120px;width:420px;height:420px;border-radius:50%;
+  background:rgba(31,95,174,.4);filter:blur(60px);pointer-events:none}
+.foot .container{position:relative}
+
+.foot__grid{display:grid;grid-template-columns:1.1fr .8fr 1.4fr;gap:2.5rem}
+.foot__logo{display:inline-flex;background:#fff;border-radius:999px;padding:.3rem .9rem}
+.foot__logo .logo{--s:120px}
+.foot__social{display:flex;gap:.6rem;margin-top:1.4rem}
+.soc{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:#fff;border:1px solid rgba(255,255,255,.16);
+  transition:transform .35s var(--ease),box-shadow .35s}
+.soc:hover{transform:translateY(-5px) scale(1.08);box-shadow:0 12px 24px rgba(0,0,0,.35)}
+.soc--facebook{background:#3b5998}.soc--instagram{background:#262626}.soc--youtube{background:#e02d2d}.soc--linkedin{background:#0a7ab5}
+
+.foot h4{font:700 1.1rem var(--font-display);margin-bottom:1.1rem}
+.foot__links{display:grid;gap:.75rem}
+.foot__links a{display:inline-block;color:#E3EBF5;transition:color .3s,transform .3s var(--ease)}
+.foot__links a:hover{color:var(--orange);transform:translateX(6px)}
+
+.foot__contact{display:grid;gap:1rem}
+.foot__contact li{display:flex;align-items:flex-start;gap:.9rem}
+.foot__contact .ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--orange)}
+.foot__contact a{color:#E3EBF5;overflow-wrap:anywhere;padding-top:.45rem;transition:color .3s}
+.foot__contact a:hover{color:var(--orange)}
+
+.foot__copy{margin-top:2.6rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.16);text-align:center;color:#9FB3CC;font-size:.9rem}
+
+@media (max-width:860px){.foot__grid{grid-template-columns:1fr 1fr}.foot__grid>div:last-child{grid-column:1/-1}}
+@media (max-width:520px){.foot{--fr:32px}.foot__grid{grid-template-columns:1fr}}

@@ -1,0 +1,13 @@
+:root{
+  --blue:#1F5FAE; --orange:#F47B20; --red:#E8412C;
+  --navy:#0F2A4A; --sky:#EAF2FB; --white:#fff; --gray:#6B7A8F;
+  --glass:rgba(21,63,114,.72);
+  --grad-cta:linear-gradient(135deg,var(--orange),var(--red));
+  --font-display:'Poppins',system-ui,sans-serif;
+  --font-head:'Inter Tight','Poppins',system-ui,sans-serif;
+  --font-serif:'Instrument Serif',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --nav-h:84px; --container:1240px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@media (max-width:640px){:root{--nav-h:68px}}
